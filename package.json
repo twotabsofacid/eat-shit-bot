@@ -1,47 +1,49 @@
 {
-	"name": "@kettle/eat-shit-bot",
-	"version": "1.0.0",
-	"description": "",
-	"author": "",
-	"main": "src/eat-shit-bot/eat-shit-bot.js",
-	"bin": {
-		"eat-shit-bot": "bin/eat-shit-bot.js"
-	},
-	"scripts": {
-		"docs": "jsdoc src/eat-shit-bot/eat-shit-bot.js -p -d dist/docs/",
-		"setup": "mkdir -p dist/",
-		"build": "npm run setup && npm run js",
-		"watch": "npm run build && npm run watch:js",
-		"js": "browserify src/eat-shit-bot/eat-shit-bot.js -o dist/eat-shit-bot.js && browserify -r ./src/eat-shit-bot/eat-shit-bot.js:eat-shit-bot > dist/eat-shit-bot.debug.js",
-		"watch:js": "onchange 'src/**/*.js' -- npm run js",
-		"test": "mocha-phantomjs -R dot test/spec/index.html",
-		"test:browser": "open test/spec/index.html",
-		"example": "open test/examples/index.html"
-	},
-	"dependencies": {
-    "lodash": "latest"
-	},
-	"devDependencies": {
-		"browserify": "^12.0.1",
-		"chai": "^3.4.1",
-		"chai-as-promised": "^5.2.0",
+  "name": "@kettle/eat-shit-bot",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "main": "src/eat-shit-bot/eat-shit-bot.js",
+  "bin": {
+    "eat-shit-bot": "bin/eat-shit-bot.js"
+  },
+  "scripts": {
+    "docs": "jsdoc src/eat-shit-bot/eat-shit-bot.js -p -d dist/docs/",
+    "setup": "mkdir -p dist/",
+    "build": "npm run setup && npm run js",
+    "watch": "npm run build && npm run watch:js",
+    "js": "browserify src/eat-shit-bot/eat-shit-bot.js -o dist/eat-shit-bot.js && browserify -r ./src/eat-shit-bot/eat-shit-bot.js:eat-shit-bot > dist/eat-shit-bot.debug.js",
+    "watch:js": "onchange 'src/**/*.js' -- npm run js",
+    "test": "mocha-phantomjs -R dot test/spec/index.html",
+    "test:browser": "open test/spec/index.html",
+    "example": "open test/examples/index.html"
+  },
+  "dependencies": {
+    "lodash": "latest",
+    "twit": "^2.2.5",
+    "twitter": "^1.7.0"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.2.0",
     "onchange": "^2.0.0",
-		"jsdoc": "^3.4.0",
-		"mocha": "^2.3.4",
-		"mocha-phantomjs": "^4.0.2",
-		"rsvp": "^3.2.1"
-	},
-	"bugs": {
-		"url": "https://github.com/kettle/eat-shit-bot/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/kettle/eat-shit-bot"
-	},
-	"homepage": "https://github.com/kettle/eat-shit-bot",
-	"contributors": [
-		""
-	],
+    "jsdoc": "^3.4.0",
+    "mocha": "^2.3.4",
+    "mocha-phantomjs": "^4.0.2",
+    "rsvp": "^3.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/kettle/eat-shit-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kettle/eat-shit-bot"
+  },
+  "homepage": "https://github.com/kettle/eat-shit-bot",
+  "contributors": [
+    ""
+  ],
   "xo": {
     "globals": [
       "document",
@@ -50,9 +52,9 @@
       "module"
     ]
   },
-	"keywords": [],
-	"engines": {
-		"node": ">=0.10.3"
-	},
-	"license": "MIT"
+  "keywords": [],
+  "engines": {
+    "node": ">=0.10.3"
+  },
+  "license": "MIT"
 }

@@ -1,6 +1,8 @@
 'use strict';
 
+var _ = require('lodash');
 var merge = require('lodash/merge');
+var Twit = require('twit');
 
 /**
  * EatShitBot constructor description
@@ -12,32 +14,67 @@ var merge = require('lodash/merge');
  * @param {string} options.example - Example options property
  */
 function EatShitBot(options) {
+	this.twitBot;
+	this.twitterBot;
+	this.stream;
 	this.options = merge({}, EatShitBot.DEFAULTS, options);
-	console.log('hello');
+	this.createTwitterConnection();
 }
 
 EatShitBot.DEFAULTS = {};
 
 module.exports = EatShitBot;
 
-/**
- * [description]
- * @function
- *
- * @param {number} tick - Description of tick parameter
- * @return {object} Description of returned value
- */
-EatShitBot.prototype.public = function (tick) {
-	return {tock: tick};
+EatShitBot.prototype.createTwitterConnection = function() {
+	this.twitBot = new Twit({
+
+	});
 };
 
-/**
- * [description]
- * @function
- *
- * @private
- * @return {boolean} Description of return value
- */
-EatShitBot.prototype._private = function () {
-	return true;
+EatShitBot.prototype.getStream = function(string) {
+	this.stream = this.twitBot.stream('statuses/filter', {
+		track: string
+	});
+	this.stream.on('tweet', function(tweet) {
+		this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
+	}.bind(this));
+};
+
+EatShitBot.prototype.getTweets = function(string, count) {
+	var statuses, i;
+	this.twitBot.get('search/tweets', {
+		q: '' + string + '',
+		count: count
+	}, function(error, data, response) {
+		if (data) {
+			statuses = data.statuses;
+			i = statuses.length;
+			while (i--) {
+				this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
+			}
+		} else {
+			console.log(error);
+		}
+	}.bind(this));
+};
+
+EatShitBot.prototype.streamAndRetweet = function(string) {
+	this.stream = this.twitBot.stream('statuses/filter', {
+		track: string
+	});
+	this.stream.on('tweet', function(tweet) {
+		this.retweet(tweet.id_str);
+	}.bind(this));
+};
+
+EatShitBot.prototype.retweet = function(tweetId) {
+	this.twitBot.post('statuses/retweet/' + tweetId, function(error, tweet, response) {
+		if (!error) {
+			this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
+		};
+	}.bind(this));
+};
+
+EatShitBot.prototype.logTweet = function(tweet, screenName) {
+	console.log(`${tweet}\n${screenName}\n\n`)
 };
