@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EatShitBot - Mocha Tests</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../../node_modules/mocha/mocha.css">
+</head>
+<body>
+	<div id="mocha"></div>
+	<script src="../../node_modules/mocha/mocha.js"></script>
+	<script src="../../node_modules/rsvp/dist/rsvp.js"></script>
+	<script src="../../node_modules/chai/chai.js"></script>
+	<script src="../../node_modules/chai-as-promised/lib/chai-as-promised.js"></script>
+	<script src="../../dist/eat-shit-bot.debug.js"></script>
+	<script>
+		var EatShitBot = require('eat-shit-bot');
+		var assert = chai.assert;
+		var expect = chai.expect;
+		var should = chai.should;
+		mocha.setup('bdd');
+	</script>
+	<script src="test.js"></script>
+	<script>mocha.run();</script>
+</body>
+</html>
