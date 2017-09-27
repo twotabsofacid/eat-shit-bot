@@ -13,3 +13,7 @@ $ node app.js
 ```
 
 and your twitter bot should run.
+
+### In the wild
+
+[Check it out on Twitter](https://twitter.com/chug_soylent)
