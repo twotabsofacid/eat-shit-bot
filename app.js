@@ -41,5 +41,5 @@ var App = (function() {
 }());
 
 App.init();
-//App.streamAndRetweet();
-App.get();
+App.streamAndRetweet();
+//App.get();

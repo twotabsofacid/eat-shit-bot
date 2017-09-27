@@ -10,3 +10,4 @@ npm-debug.log
 tag.prop
 temp/
 /coverage
+credentials.js

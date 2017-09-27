@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var merge = require('lodash/merge');
 var Twit = require('twit');
+var credentials = require('./../../credentials');
 
 /**
  * EatShitBot constructor description
@@ -27,7 +28,10 @@ module.exports = EatShitBot;
 
 EatShitBot.prototype.createTwitterConnection = function() {
 	this.twitBot = new Twit({
-
+		consumer_key:         credentials.consumer_key,
+		consumer_secret:      credentials.consumer_secret,
+		access_token:         credentials.access_token,
+		access_token_secret:  credentials.access_token_secret
 	});
 };
 
@@ -63,7 +67,11 @@ EatShitBot.prototype.streamAndRetweet = function(string) {
 		track: string
 	});
 	this.stream.on('tweet', function(tweet) {
-		this.retweet(tweet.id_str);
+		console.log('we got a tweet:', tweet["text"]);
+		if (tweet["text"].toLowerCase().indexOf(string.toLowerCase()) !== -1) {
+			console.log('we retweet:', tweet["text"]);
+			this.retweet(tweet.id_str);
+		}
 	}.bind(this));
 };
 
