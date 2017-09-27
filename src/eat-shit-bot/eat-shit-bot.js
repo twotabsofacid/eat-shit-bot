@@ -67,9 +67,7 @@ EatShitBot.prototype.streamAndRetweet = function(string) {
 		track: string
 	});
 	this.stream.on('tweet', function(tweet) {
-		console.log('we got a tweet:', tweet["text"]);
 		if (tweet["text"].toLowerCase().indexOf(string.toLowerCase()) !== -1) {
-			console.log('we retweet:', tweet["text"]);
 			this.retweet(tweet.id_str);
 		}
 	}.bind(this));
