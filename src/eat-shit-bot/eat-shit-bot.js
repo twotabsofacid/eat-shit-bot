@@ -79,7 +79,10 @@ EatShitBot.prototype.streamAndRetweet = function(string) {
 		console.log('warning:', warning);
 	}.bind(this));
 	this.stream.on('reconnect', function(request, response, connectInterval) {
-		console.log('attemping to reconnect at', connectInterval);
+		console.log('attemping to reconnect, status message:', response.statusMessage);
+		request.on('error', function(error) {
+			console.log('error:', error);
+		});
 	}.bind(this));
 };
 
