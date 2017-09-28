@@ -38,3 +38,5 @@ WantedBy=network-online.target
 After creating that file, you'll need to reload, `$ systemctl daemon-reload`, and then start the daemon: `$ systemctl start eatshitbot` (or enable it, which will have it always run even if you exit out of ssh: `$ systemctl enable eatshitbot.service`).
 
 To make sure this is working, do `$ systemctl status eatshitbot.service`. You can restart the service by doing `$ systemctl restart eatshitbot.service`.
+
+Here's [a cheatsheet](http://www.ethicalhackx.com/systemd-cheat-sheet-linux/).
