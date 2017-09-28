@@ -75,6 +75,12 @@ EatShitBot.prototype.streamAndRetweet = function(string) {
 		console.log('disconnected:', disconnectMessage);
 		this.streamAndRetweet(string);
 	}.bind(this));
+	this.stream.on('warning', function(warning) {
+		console.log('warning:', warning);
+	}.bind(this));
+	this.stream.on('reconnect', function(request, response, connectInterval) {
+		console.log('attemping to reconnect at', connectInterval);
+	}.bind(this));
 };
 
 EatShitBot.prototype.retweet = function(tweetId) {
