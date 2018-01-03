@@ -25,7 +25,7 @@ To run this on a server (I'm running on digital ocean), there's two ways you can
 
 #### pm2
 
-Insteall pm2 with
+Install pm2 with
 
 ```
 npm install -g pm2
