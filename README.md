@@ -21,7 +21,21 @@ and your twitter bot should run.
 
 ### On a server
 
-To run this on a server (I'm running on digital ocean), you'll want to daemonize the process. To do this, `$ cd /etc/systemd/system`, you'll be using `systemd`. Create a `.service` file, like `eatshitbot.service`. This should look something like this:
+To run this on a server (I'm running on digital ocean), there's two ways you can do this. You can daemonize the process manually, or you can use `pm2` to do this for you.
+
+#### pm2
+
+Insteall pm2 with
+
+```
+npm install -g pm2
+```
+
+Then `cd` to the directory where you've placed this app, and run `pm2 start app.js`. You can find more details for how to use `pm2` [here](http://pm2.keymetrics.io/).
+
+#### Manually daemonize
+
+To manually daemonize the process, do `$ cd /etc/systemd/system`. You'll be using `systemd`. Create a `.service` file, like `eatshitbot.service`. This should look something like this:
 
 ```
 [Unit]
