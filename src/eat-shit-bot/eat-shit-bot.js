@@ -73,9 +73,6 @@ EatShitBot.prototype.streamAndRetweet = function(phraseToFilter) {
 			if(retweetIt) {
 				this.retweet(tweet.id_str);
 			}
-			else {
-				const a = 1;
-			}
 		}
 	}.bind(this));
 	this.checkDisallowedWords = function checkDisallowedWords(tweetText) {
