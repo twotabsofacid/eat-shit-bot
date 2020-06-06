@@ -3,11 +3,13 @@
 
 This is a twitter bot to retweet people who use a certain phrase. Currently, that phrase is "eat shit". 
 
+Many thanks to the original @ https://github.com/skiprox/eat-shit-bot
+
 ### How it works
 
 You can adjust the phrase being searched for by changing the the variable `phrase`
 
-Arrays of `disallowedLeadWords` and `disallowedFollowWords` can be passed as options which can prevent unwanted retweets of the phrase (for example, to prevent <em>"eat shit out there"</em> from being retweeted, you could add the string "out" to `options.disallowedFollowWords`)
+Arrays of `disallowedLeadWords` and `disallowedFollowWords` can be passed as options which can prevent unwanted retweets of the phrase (for example, to prevent <em>"get bent out of shape"</em> from being retweeted, you could add the string "out" to `options.disallowedFollowWords`)
 
 These variables are located in `app.js`
 
@@ -22,7 +24,7 @@ and your twitter bot should run.
 
 ### In the wild
 
-[Check it out on Twitter](https://twitter.com/chug_soylent)
+[Check it out on Twitter](https://twitter.com/getBentBot1)
 
 
 ### On a server

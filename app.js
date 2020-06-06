@@ -5,10 +5,10 @@ let eatShitBot = require('./src/eat-shit-bot/eat-shit-bot');
 let App = (function() {
 
 	let Bot;
-	const phrase = 'eat shit';
+	const phrase = 'get bent';
 
 	const disallowedLeadWords = [];
-	const disallowedFollowWords = [];
+	const disallowedFollowWords = ['over', 'out'];
 
 	let initialize = function() {
 		Bot = new eatShitBot({
