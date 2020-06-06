@@ -8,7 +8,7 @@ let App = (function() {
 	const phrase = 'get bent';
 
 	const disallowedLeadWords = [];
-	const disallowedFollowWords = ['over', 'out'];
+	const disallowedFollowWords = [];
 
 	let initialize = function() {
 		Bot = new eatShitBot({
