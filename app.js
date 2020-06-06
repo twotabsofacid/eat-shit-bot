@@ -5,7 +5,7 @@ let eatShitBot = require('./src/eat-shit-bot/eat-shit-bot');
 let App = (function() {
 
 	let Bot;
-	const phrase = 'get bent';
+	const phrase = 'eat shit';
 
 	const disallowedLeadWords = [];
 	const disallowedFollowWords = [];
