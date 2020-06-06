@@ -1,25 +1,31 @@
 'use strict';
 
-var eatShitBot = require('./src/eat-shit-bot/eat-shit-bot');
+let eatShitBot = require('./src/eat-shit-bot/eat-shit-bot');
 
-var App = (function() {
+let App = (function() {
 
-	var Bot;
-	var phrase = 'Eat shit';
+	let Bot;
+	const phrase = 'get bent';
 
-	var initialize = function() {
-		Bot = new eatShitBot();
+	const disallowedLeadWords = [];
+	const disallowedFollowWords = ['over', 'out'];
+
+	let initialize = function() {
+		Bot = new eatShitBot({
+			disallowedLeadWords,
+			disallowedFollowWords
+		});
 	};
 
-	var stream = function() {
+	let stream = function() {
 		Bot.getStream(phrase);
 	};
 
-	var get = function() {
+	let get = function() {
 		Bot.getTweets(phrase, 5);
 	};
 
-	var streamAndRetweet = function() {
+	let streamAndRetweet = function() {
 		Bot.streamAndRetweet(phrase);
 	};
 

@@ -1,9 +1,15 @@
 # eat-shit-bot
 > Lmao
 
-This is a twitter bot to retweet people who use a certain phrase. Currently, that phrase is "eat shit".
+This is a twitter bot to retweet people who use a certain phrase. Currently, that phrase is "eat shit". 
 
 ### How it works
+
+You can adjust the phrase being searched for by changing the the variable `phrase`
+
+Arrays of `disallowedLeadWords` and `disallowedFollowWords` can be passed as options which can prevent unwanted retweets of the phrase (for example, to prevent <em>"eat shit out there"</em> from being retweeted, you could add the string "out" to `options.disallowedFollowWords`)
+
+These variables are located in `app.js`
 
 To run, you need to create a `credentials.js` file, similar to the `credentials.example.js` file but with actual twitter credentials in it. Then, just:
 

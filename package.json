@@ -1,8 +1,8 @@
 {
-  "name": "@kettle/eat-shit-bot",
-  "version": "1.0.0",
-  "description": "",
-  "author": "",
+  "name": "@NoiseEee/eat-shit-bot",
+  "version": "1.1.0",
+  "description": "A bot that retweets any phrase you like",
+  "author": "Joshua Malinsky",
   "main": "src/eat-shit-bot/eat-shit-bot.js",
   "bin": {
     "eat-shit-bot": "bin/eat-shit-bot.js"
@@ -24,25 +24,25 @@
     "twitter": "^1.7.0"
   },
   "devDependencies": {
-    "browserify": "^12.0.1",
-    "chai": "^3.4.1",
-    "chai-as-promised": "^5.2.0",
-    "onchange": "^2.0.0",
+    "browserify": "^16.5.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "jsdoc": "^3.4.0",
-    "mocha": "^2.3.4",
+    "mocha": "^7.2.0",
     "mocha-phantomjs": "^4.0.2",
-    "rsvp": "^3.2.1"
+    "onchange": "^7.0.2",
+    "rsvp": "^4.8.5"
   },
   "bugs": {
     "url": "https://github.com/kettle/eat-shit-bot/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kettle/eat-shit-bot"
+    "url": "https://github.com/NoiseEee/eat-shit-bot"
   },
-  "homepage": "https://github.com/kettle/eat-shit-bot",
+  "homepage": "https://github.com/NoiseEee/eat-shit-bot",
   "contributors": [
-    ""
+    "Sean Scanlan, https://github.com/skiprox"
   ],
   "xo": {
     "globals": [
@@ -54,7 +54,7 @@
   },
   "keywords": [],
   "engines": {
-    "node": ">=0.10.3"
+    "node": ">=12.0.0"
   },
   "license": "MIT"
 }

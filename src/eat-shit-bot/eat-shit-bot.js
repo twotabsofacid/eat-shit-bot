@@ -1,9 +1,9 @@
 'use strict';
 
-var _ = require('lodash');
-var merge = require('lodash/merge');
-var Twit = require('twit');
-var credentials = require('./../../credentials');
+let _ = require('lodash');
+let merge = require('lodash/merge');
+let Twit = require('twit');
+let credentials = require('./../../credentials');
 
 /**
  * EatShitBot constructor description
@@ -45,7 +45,7 @@ EatShitBot.prototype.getStream = function(string) {
 };
 
 EatShitBot.prototype.getTweets = function(string, count) {
-	var statuses, i;
+	let statuses, i;
 	this.twitBot.get('search/tweets', {
 		q: '' + string + '',
 		count: count
@@ -62,18 +62,43 @@ EatShitBot.prototype.getTweets = function(string, count) {
 	}.bind(this));
 };
 
-EatShitBot.prototype.streamAndRetweet = function(string) {
+EatShitBot.prototype.streamAndRetweet = function(phraseToFilter) {
 	this.stream = this.twitBot.stream('statuses/filter', {
-		track: string
+		track: phraseToFilter
 	});
 	this.stream.on('tweet', function(tweet) {
-		if (tweet["text"].toLowerCase().indexOf(string.toLowerCase()) !== -1) {
-			this.retweet(tweet.id_str);
+		const tweetText = tweet['text'].toLowerCase();
+		if (tweetText.includes(phraseToFilter.toLowerCase())) {
+			const retweetIt = this.checkDisallowedWords(tweetText);
+			if(retweetIt) {
+				this.retweet(tweet.id_str);
+			}
+			else {
+				const a = 1;
+			}
 		}
 	}.bind(this));
+	this.checkDisallowedWords = function checkDisallowedWords(tweetText) {
+		let disallowedTweets = [];
+		if(this.options.disallowedFollowWords.length > 0) {
+			disallowedTweets = this.options.disallowedFollowWords.filter((word) => {
+				const newPhrase = `${phraseToFilter} ${word}`;
+				console.log(`~~ looking for ${newPhrase}`);
+				return tweetText.includes(newPhrase);
+			});
+		}
+		if(this.options.disallowedLeadWords.length > 0) {
+			disallowedTweets = this.options.disallowedLeadWords.filter((word) => {
+				const newPhrase = `${word} ${phraseToFilter}`;
+				console.log(`~~ looking for ${newPhrase}`);
+				return tweetText.includes(newPhrase);
+			});
+		}
+		return disallowedTweets.length === 0;
+	}.bind(this);
 	this.stream.on('disconnect', function(disconnectMessage) {
 		console.log('disconnected:', disconnectMessage);
-		this.streamAndRetweet(string);
+		this.streamAndRetweet(phraseToFilter);
 	}.bind(this));
 	this.stream.on('warning', function(warning) {
 		console.log('warning:', warning);
