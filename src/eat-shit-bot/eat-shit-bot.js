@@ -80,14 +80,14 @@ EatShitBot.prototype.streamAndRetweet = function(phraseToFilter) {
 		if(this.options.disallowedFollowWords.length > 0) {
 			disallowedTweets = this.options.disallowedFollowWords.filter((word) => {
 				const newPhrase = `${phraseToFilter} ${word}`;
-				console.log(`~~ looking for ${newPhrase}`);
+				// console.log(`~~ looking for ${newPhrase}`);
 				return tweetText.includes(newPhrase);
 			});
 		}
 		if(this.options.disallowedLeadWords.length > 0) {
 			disallowedTweets = this.options.disallowedLeadWords.filter((word) => {
 				const newPhrase = `${word} ${phraseToFilter}`;
-				console.log(`~~ looking for ${newPhrase}`);
+				// console.log(`~~ looking for ${newPhrase}`);
 				return tweetText.includes(newPhrase);
 			});
 		}
